@@ -1,5 +1,5 @@
 - name: Ping 
-  hosts: "Windows Test"
+  hosts: windows
 
   tasks:
   - name: ping
