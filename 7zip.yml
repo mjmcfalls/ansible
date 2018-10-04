@@ -1,4 +1,4 @@
-# install/uninstall with win_package
+- name: Install 7-Zip
   hosts: DEV-ANSWIN01
   connection: winrm
   winrm_transport: basic
