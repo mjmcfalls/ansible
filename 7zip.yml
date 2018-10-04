@@ -1,7 +1,7 @@
 - name: Install 7-Zip
   hosts: DEV-ANSWIN01
   connection: winrm
-  winrm_transport: basic
+  ansible_winrm_transport: basic
   port: 5986
   tasks:
     - name: download the 7-Zip package
