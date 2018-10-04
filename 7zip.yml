@@ -1,5 +1,5 @@
 - name: Install 7-Zip
-  hosts: DEV-ANSWIN01
+  hosts: windows
   connection: winrm
   port: 5986
   tasks:
