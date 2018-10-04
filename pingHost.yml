@@ -1,5 +1,6 @@
-- hosts: DEV-ANSWIN01
+- name: Ping 
+  hosts: Windows Test
+
   tasks:
-  - name: Ping Host
-    ping:
-  
+  - name: ping
+    win_ping:
