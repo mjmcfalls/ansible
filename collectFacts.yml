@@ -1,7 +1,3 @@
 - name: Collect only facts returned by facter
   hosts: windows
-  setup:
-    gather_subset:
-      - '!all'
-      - '!any'
-      - facter
+  gather_facts: False
