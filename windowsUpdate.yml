@@ -2,7 +2,7 @@
   hosts: windows
   tasks:
     - name: Install all security, critical
-    win_updates:
+      win_updates:
         category_names:
         - SecurityUpdates
         - CriticalUpdates
