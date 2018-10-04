@@ -1,1 +1,5 @@
-- ping:
+- hosts: DEV-ANSWIN01
+  tasks:
+  - name: Ping Host
+    ping:
+  
