@@ -2,4 +2,4 @@
   hosts: windows
   gather_facts: True
   tasks:
-    - debug: var=hostvars[inventory_hostname]['ansible_enp0s3']['ipv4']['address']
+    - debug: var=hostvars
