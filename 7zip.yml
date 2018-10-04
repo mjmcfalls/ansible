@@ -1,6 +1,8 @@
 # install/uninstall with win_package
 - name: Install 7-Zip
   hosts: DEV-ANSWIN01
+  connection: winrm
+  port: 5986
   tasks:
     - name: download the 7-Zip package
       win_get_url:
