@@ -2,4 +2,4 @@
   hosts: tag_Name_AnsibleTest1
   tasks:
   - name: ping
-    net_ping:
+    ping:
