@@ -1,0 +1,14 @@
+- name: Deploy EC2 
+  tasks:
+  - name: Deploy EC2
+    ec2: 
+      key_name: "{{eckeyname}}"
+      instance_type: "{{instanceType}}"
+      image: "{{amiId}}"
+      wait: yes
+      group: "{{groupName}}"
+      count: "{{instanceCount}}"
+      vpc_subnet_id: "{{vpcsubnetid}}"
+      assign_public_ip: yes
+      region: "{{aws_region}}"
+      zone: "{{aws_zone}}"
