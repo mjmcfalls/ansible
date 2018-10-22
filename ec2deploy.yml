@@ -38,3 +38,4 @@
   gather_facts: True
   roles:
     - update_instance
+      installHTTPd
