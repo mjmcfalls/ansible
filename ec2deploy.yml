@@ -16,4 +16,6 @@
       assign_public_ip: yes
       region: "{{aws_region}}"
       zone: "{{aws_zone}}"
+      tags:
+        use: "{{usevar}}"
     register: ec2
