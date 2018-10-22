@@ -37,4 +37,4 @@
     become: True
     gather_facts: True
     roles:
-      update_instance
+      - update_instance
