@@ -6,7 +6,7 @@
   tasks:
   - name: Deploy EC2
     ec2: 
-      key_name:"{{eckeyname}}"
+      key_name: "{{eckeyname}}"
       instance_type: "{{instanceType}}"
       image: "{{amiId}}"
       wait: yes
