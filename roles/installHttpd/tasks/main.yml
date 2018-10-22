@@ -9,3 +9,7 @@
     get_url:
       url: https://s3.us-east-2.amazonaws.com/mcfalls.me/ansible_index.html
       dest: /var/www/httpd/index.html
+  - name: ensure httpd is running
+    service:
+      name: httpd 
+      state: started
