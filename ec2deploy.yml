@@ -16,8 +16,7 @@
         assign_public_ip: yes
         region: "{{aws_region}}"
         zone: "{{aws_zone}}"
-        tags:
-          use: "{{usevar}}"
+
       register: ec2
 
     - name: Add new instance to host group
