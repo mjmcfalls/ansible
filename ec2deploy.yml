@@ -5,7 +5,7 @@
   gather_facts: False
   tasks:
   - name: Deploy EC2
-    ec2: 
+    local_action: ec2 
       key_name: "{{eckeyname}}"
       instance_type: "{{instanceType}}"
       image: "{{amiId}}"
