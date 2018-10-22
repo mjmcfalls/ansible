@@ -16,7 +16,6 @@
         assign_public_ip: yes
         region: "{{aws_region}}"
         zone: "{{aws_zone}}"
-
       register: ec2
 
     - name: Add new instance to host group
@@ -34,8 +33,8 @@
       # - name: Configure instance(s)
 
     - name: Update Hosts
-      with_items: "{{ ec2.instances }}"
       become: True
       gather_facts: True
       roles:
         - update_instance
+      with_items: "{{ ec2.instances }}"
