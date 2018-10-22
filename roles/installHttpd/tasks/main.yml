@@ -1,0 +1,11 @@
+---
+- name: upgrade all packages
+  tasks:
+  - name: install HTTPD via yum
+      yum:
+        name: 'httpd'
+        state: latest
+  - name: Pull webpage from Github
+    get_url:
+      url: https://s3.us-east-2.amazonaws.com/mcfalls.me/ansible_index.html
+      dest: /var/www/httpd/index.html
