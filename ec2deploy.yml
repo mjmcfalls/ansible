@@ -33,9 +33,9 @@
       with_items: "{{ ec2.instances }}"
       # - name: Configure instance(s)
 
-- name: Update Hosts
-  hosts: launched
-  become: True
-  gather_facts: True
-  roles:
-    - update_instance
+    - name: Update Hosts
+      with_items: "{{ ec2.instances }}"
+      become: True
+      gather_facts: True
+      roles:
+        - update_instance
