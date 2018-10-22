@@ -7,7 +7,7 @@
   - name: Deploy EC2
     ec2: 
       key_name:"{{eckeyname}}"
-      instance_type="{{instanceType}}"
+      instance_type: "{{instanceType}}"
       image: "{{amiId}}"
       wait: yes
       group: "{{groupName}}"
