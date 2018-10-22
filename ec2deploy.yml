@@ -36,5 +36,5 @@
       become: True
       gather_facts: True
       roles:
-        - update_instance
+        update_instance
       with_items: "{{ ec2.instances }}"
