@@ -1,5 +1,5 @@
 ---
-- name: upgrade all packages
+- name: Configure HTTPD and install webpage
   tasks:
   - name: install HTTPD via yum
       yum:
