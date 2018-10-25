@@ -21,7 +21,7 @@
     - name: Add new instance to host group
       add_host:
         hostname: "{{ item.public_ip }}"
-        groupname: launched
+        groupname: ec2Test
       with_items: "{{ ec2.instances }}"
 
     - name: Wait for SSH to come up
@@ -33,7 +33,7 @@
       # - name: Configure instance(s)
 
 - name: Update Hosts
-  hosts: launched
+  hosts: ec2Test
   become: True
   gather_facts: True
   roles:
