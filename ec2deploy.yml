@@ -39,3 +39,13 @@
   roles:
     - update_instance
     - installHttpd
+- name: Update Record
+  tasks:
+  snow_record:
+    username: "{{sn_user}}"
+    password: "{{sn_password}}"
+    instance: "{{sn_instance}}"
+    state: present
+    number: "{{ticketId}}"
+    data:
+      work_notes : "{{notes}}"
