@@ -46,6 +46,6 @@
     password: "{{sn_password}}"
     instance: "{{sn_instance}}"
     state: present
-    number: "{{ticketId}}"
+    number: "{{snownumber}}"
     data:
       work_notes : "{{notes}}"
