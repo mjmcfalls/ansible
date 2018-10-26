@@ -1,10 +1,11 @@
 ---
 - name: Update Record
-  snow_record:
-    username: "{{sn_user}}"
-    password: "{{sn_password}}"
-    instance: {{sn_instance}}
-    state: present
-    number: ""{{ticketId}}"
-    data:
-      work_notes : "{{notes}}"
+  tasks:
+    snow_record:
+      username: "{{sn_user}}"
+      password: "{{sn_password}}"
+      instance: {{sn_instance}}
+      state: present
+      number: ""{{ticketId}}"
+      data:
+        work_notes : "{{notes}}"
