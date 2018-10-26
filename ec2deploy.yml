@@ -39,8 +39,6 @@
   roles:
     - update_instance
     - installHttpd
-
-- name: Update Record
   tasks:
   - name: Update Record
     snow_record:
