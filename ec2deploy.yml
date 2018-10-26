@@ -36,6 +36,8 @@
   hosts: ec2Test
   become: True
   gather_facts: True
-  roles:
-    - update_instance
-    - installHttpd
+  tasks:
+  -import role:
+    name: update_instance
+  -import role:
+    name: installHttpd
