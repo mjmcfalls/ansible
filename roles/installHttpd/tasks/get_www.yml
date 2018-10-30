@@ -1,0 +1,4 @@
+- name: Pull webpage from AWS S3
+  get_url:
+    url: https://s3.us-east-2.amazonaws.com/mcfalls.me/ansible_index.html
+    dest: /var/www/html/index.html
