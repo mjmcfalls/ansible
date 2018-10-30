@@ -1,13 +1,8 @@
 ---
 - name: install HTTPD via yum
-  yum:
-    name: 'httpd'
-    state: latest
+  include_tasks: install_httpd.yml
 - name: Pull webpage from AWS S3
-  get_url:
-    url: https://s3.us-east-2.amazonaws.com/mcfalls.me/ansible_index.html
-    dest: /var/www/html/index.html
-- name: Start httpd
-  service:
-    name: httpd 
-    state: started
+  include_tasks: get_www.yml
+- name: Enable and start httpd
+  include_tasks: enable_httpd.yml
+
