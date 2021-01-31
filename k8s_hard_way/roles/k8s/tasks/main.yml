@@ -1,0 +1,3 @@
+---
+- name: Install k8s preq
+  import_tasks: 1_prereqs.yml

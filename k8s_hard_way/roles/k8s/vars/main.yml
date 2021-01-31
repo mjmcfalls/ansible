@@ -1,0 +1,4 @@
+kubectl_uri: https://storage.googleapis.com/kubernetes-release/release/v1.10.2/bin/linux/amd64/kubectl
+cfssljson_uri: https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
+cfssl_uri: https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
+bin_path: /usr/local/bin
