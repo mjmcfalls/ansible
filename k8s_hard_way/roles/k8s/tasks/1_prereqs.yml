@@ -29,8 +29,9 @@
 
 - name: "Move cfssl_linux-amd64 to /usr/local/bin/cfssl"
   ansible.builtin.copy:
-    src: "/tmp/cfssl_linux-amd64"
-    dest: "{{ bin_path }}/cfssl"
+    remote_src: yes
+    src: '/tmp/cfssl_linux-amd64'
+    dest: '{{ bin_path }}/cfssl'
     mode: "755"
   when: cfssl_tmp_state.stat.exists
 
@@ -41,6 +42,7 @@
 
 - name: "Move /tmp/cfssljson_linux-amd64 to /usr/local/bin/cfssljson"
   ansible.builtin.copy:
+    remote_src: yes
     src: /tmp/cfssljson_linux-amd64
     dest: "{{ bin_path }}/cfssljson"
     mode: '755'
@@ -59,7 +61,6 @@
     state: absent
   when: cfssljson_tmp_state.stat.exists
 
-
 - name: "Verify /usr/local/bin/kubectl"
   ansible.builtin.stat: 
     path: "{{ bin_path }}/kubectl"
@@ -71,8 +72,14 @@
     dest: /tmp
   when: kubectl_state.stat.exists == False
 
+- name: "Verify /tmp/kubectl"
+  ansible.builtin.stat: 
+    path: /tmp/kubectl
+  register: kubectl_tmp_state
+
 - name: "Move /tmp/kubectl to /usr/local/bin/kubectl"
   ansible.builtin.copy:
+    remote_src: yes
     src: /tmp/kubectl
     dest: '{{ bin_path }}/kubectl'
     mode: '755'
