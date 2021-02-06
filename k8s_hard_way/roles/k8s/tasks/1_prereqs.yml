@@ -1,65 +1,65 @@
 ---
 # Get cfssl and cfssljson
-- name: "Verify /usr/local/bin/cfssl"
-  ansible.builtin.stat: 
-    path: "{{ bin_path }}/cfssl"
-  register: cfssl_state
+# - name: "Verify /usr/local/bin/cfssl"
+#   ansible.builtin.stat: 
+#     path: "{{ bin_path }}/cfssl"
+#   register: cfssl_state
 
-- name: "Verify /usr/local/bin/cfssljson"
-  ansible.builtin.stat: 
-    path: "{{ bin_path }}/cfssljson"
-  register: cfssljson_state
+# - name: "Verify /usr/local/bin/cfssljson"
+#   ansible.builtin.stat: 
+#     path: "{{ bin_path }}/cfssljson"
+#   register: cfssljson_state
 
-- name: Download cfssl
-  get_url:
-    url: "{{ cfssl_uri }}"
-    dest: /tmp
-  when: cfssl_state.stat.exists == False
+# - name: Download cfssl
+#   get_url:
+#     url: "{{ cfssl_uri }}"
+#     dest: /tmp
+#   when: cfssl_state.stat.exists == False
 
-- name: Download cfssljson
-  get_url:
-    url: "{{ cfssljson_uri }}"
-    dest: /tmp
-  when: cfssljson_state.stat.exists == False
+# - name: Download cfssljson
+#   get_url:
+#     url: "{{ cfssljson_uri }}"
+#     dest: /tmp
+#   when: cfssljson_state.stat.exists == False
 
-- name: Verify cfssl_linux-amd64
-  ansible.builtin.stat: 
-    path: /tmp/cfssl_linux-amd64
-  register: cfssl_tmp_state
+# - name: Verify cfssl_linux-amd64
+#   ansible.builtin.stat: 
+#     path: /tmp/cfssl_linux-amd64
+#   register: cfssl_tmp_state
 
-- name: "Move cfssl_linux-amd64 to /usr/local/bin/cfssl"
-  ansible.builtin.copy:
-    remote_src: yes
-    src: '/tmp/cfssl_linux-amd64'
-    dest: '{{ bin_path }}/cfssl'
-    mode: "755"
-  when: cfssl_tmp_state.stat.exists
+# - name: "Move cfssl_linux-amd64 to /usr/local/bin/cfssl"
+#   ansible.builtin.copy:
+#     remote_src: yes
+#     src: '/tmp/cfssl_linux-amd64'
+#     dest: '{{ bin_path }}/cfssl'
+#     mode: "755"
+#   when: cfssl_tmp_state.stat.exists
 
-- name: "Verify cfssljson_linux-amd64"
-  ansible.builtin.stat: 
-    path: /tmp/cfssljson_linux-amd64
-  register: cfssljson_tmp_state
+# - name: "Verify cfssljson_linux-amd64"
+#   ansible.builtin.stat: 
+#     path: /tmp/cfssljson_linux-amd64
+#   register: cfssljson_tmp_state
 
-- name: "Move /tmp/cfssljson_linux-amd64 to /usr/local/bin/cfssljson"
-  ansible.builtin.copy:
-    remote_src: yes
-    src: /tmp/cfssljson_linux-amd64
-    dest: "{{ bin_path }}/cfssljson"
-    mode: '755'
-  when: cfssljson_tmp_state.stat.exists
+# - name: "Move /tmp/cfssljson_linux-amd64 to /usr/local/bin/cfssljson"
+#   ansible.builtin.copy:
+#     remote_src: yes
+#     src: /tmp/cfssljson_linux-amd64
+#     dest: "{{ bin_path }}/cfssljson"
+#     mode: '755'
+#   when: cfssljson_tmp_state.stat.exists
 
-# Clean up temp files if they exists
-- name: Clean up temp cfssl_linux-amd64
-  ansible.builtin.file:
-    path: /tmp/cfssl_linux-amd64
-    state: absent
-  when: cfssl_tmp_state.stat.exists
+# # Clean up temp files if they exists
+# - name: Clean up temp cfssl_linux-amd64
+#   ansible.builtin.file:
+#     path: /tmp/cfssl_linux-amd64
+#     state: absent
+#   when: cfssl_tmp_state.stat.exists
 
-- name: Clean up temp cfssl_linux-amd64
-  ansible.builtin.file:
-    path: /tmp/cfssljson_linux-amd64
-    state: absent
-  when: cfssljson_tmp_state.stat.exists
+# - name: Clean up temp cfssl_linux-amd64
+#   ansible.builtin.file:
+#     path: /tmp/cfssljson_linux-amd64
+#     state: absent
+#   when: cfssljson_tmp_state.stat.exists
 
 - name: "Verify /usr/local/bin/kubectl"
   ansible.builtin.stat: 
