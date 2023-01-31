@@ -1,0 +1,28 @@
+---
+- name: Restart W3SVC
+  win_service:
+      name: W3SVC
+      state: restarted
+
+- name: Restart wuauserv
+  win_service:
+    name: wuauserv
+    state: restarted
+
+- name: Restart w32time
+  win_service:
+      name: w32time
+      state: restarted
+
+- name: Restart SNMP
+  win_service:
+    name: SNMP
+    state: restarted
+
+- name: W32tm resync
+  win_shell: |
+              w32tm /resync
+
+- name: GPUpdate Force
+  win_shell: |
+          '& "gpupdate" /force'

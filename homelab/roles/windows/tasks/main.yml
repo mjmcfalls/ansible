@@ -1,0 +1,4 @@
+---
+- name: Windows - Run "{{ windows_task }}"
+  tags: always
+  include_tasks: "{{ windows_task }}"

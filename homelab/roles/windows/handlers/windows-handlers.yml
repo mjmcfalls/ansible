@@ -1,0 +1,21 @@
+---
+- name: Restart W3SVC
+  win_service:
+      name: W3SVC
+      state: restarted
+
+- name: Restart wuauserv
+  win_service:
+    name: wuauserv
+    state: restarted
+
+- name: Restart W32Time
+  win_service:
+      name: W32Time
+      state: restarted
+
+- name: Restart SNMP
+  win_service:
+    name: SNMP
+    state: restarted
+    

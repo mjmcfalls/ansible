@@ -1,0 +1,6 @@
+---
+nix_timestamp: "{{ ansible_facts['date_time']['year'] }}{{ ansible_facts['date_time']['month'] }}{{ ansible_facts['date_time']['day'] }}{{ ansible_facts['date_time']['hour'] }}{{ ansible_facts['date_time']['minute'] }}"
+noaa_container_name: heatingdata
+noaa_container_image: "172.16.255.241:5000/heatingdata:latest"
+noaa_env_path: /root/heatingdegreedays/heating.env 
+noaa_network_name: tempmon_tempmon-network 

@@ -1,0 +1,9 @@
+---
+- name: "Run container - {{ noaa_container_name }}" 
+  containers.podman.podman_container:
+    name: "{{ noaa_container_name }}_{{ nix_timestamp }}"
+    image: "{{ noaa_container_image }}"
+    state: started
+    env_file: "{{ noaa_env_path }}"
+    network: "{{ noaa_network_name }}"
+    rm: true

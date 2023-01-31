@@ -1,0 +1,4 @@
+---
+- name: Nix - Run "{{ nix_task }}"
+  tags: always
+  include_tasks: "{{ nix_task }}"
