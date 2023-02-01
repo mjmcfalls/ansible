@@ -6,4 +6,5 @@
     state: started
     env_file: "{{ noaa_env_path }}"
     network: "{{ noaa_network_name }}"
+    tty: true
     rm: false
