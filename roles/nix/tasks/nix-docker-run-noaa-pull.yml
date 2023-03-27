@@ -8,4 +8,6 @@
     networks:
       - name: "{{ noaa_network_name }}"
     tty: true
-    rm: false
+    auto_remove: false
+    cleanup: false
+    detach: true
