@@ -5,7 +5,7 @@
     image: "{{ noaa_container_image }}"
     state: started
     env_file: "{{ noaa_env_path }}"
-        networks:
-          - name: "{{ noaa_network_name }}"
+    networks:
+      - name: "{{ noaa_network_name }}"
     tty: true
     rm: false
