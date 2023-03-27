@@ -1,6 +1,6 @@
 ---
 - name: "Run {{ noaa_container_name }}" 
-  docker_container:
+  community.docker.docker_container:
     name: "{{ noaa_container_name }}_{{ nix_timestamp }}"
     image: "{{ noaa_container_image }}"
     state: started
