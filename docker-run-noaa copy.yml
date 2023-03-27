@@ -1,0 +1,9 @@
+---
+- name: Nix - Docker - Run NOAA Data collection
+  hosts: all 
+  gather_facts: true
+
+  roles:
+    - role: roles/nix
+      vars:
+        nix_task: nix-docker-run-noaa-pull.yml
