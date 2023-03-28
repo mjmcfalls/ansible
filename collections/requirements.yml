@@ -10,3 +10,6 @@ collections:
 
   - name: containers.podman
     source: https://galaxy.ansible.com
+  
+  - name: community.general.docker
+    source: https://galaxy.ansible.com
