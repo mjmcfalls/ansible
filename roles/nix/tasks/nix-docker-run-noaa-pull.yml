@@ -7,6 +7,11 @@
     env_file: "{{ noaa_env_path }}"
     networks:
       - name: "{{ noaa_network_name }}"
+    mounts:
+      - source: /etc/localtime
+        target: /etc/localtime
+        read_only: true
+        type: bind
     tty: true
     auto_remove: false
     cleanup: false
