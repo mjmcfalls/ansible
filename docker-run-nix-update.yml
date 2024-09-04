@@ -1,0 +1,9 @@
+---
+- name: Nix - Install updates
+  hosts: all 
+  gather_facts: true
+
+  roles:
+    - role: roles/nix
+      vars:
+        nix_task: nix-update-hosts.yml
