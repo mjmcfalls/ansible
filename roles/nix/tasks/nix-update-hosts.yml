@@ -1,41 +1,37 @@
-- name: Update Nix servers
-  hosts: all
-  become: true
+---
+# Debian-based distro
+- name: Update Debian-based distro
+  when: ansible_distribution in ['Debian', 'Ubuntu', 'LinuxMint']
+  ansible.builtin.apt:
+    upgrade: true
+    update_cache: true
+    cache_valid_time: 3600
 
-  tasks:
-    # Debian-based distro
-    - name: Update Debian-based distro
-      when: ansible_distribution in ['Debian', 'Ubuntu', 'LinuxMint']
-      ansible.builtin.apt:
-        upgrade: true
-        update_cache: true
-        cache_valid_time: 3600
+# Arch Linux distro
+- name: Update Arch-based distro
+  when: ansible_distribution == 'Arch Linux'
+  community.general.pacman:
+    update_cache: true
+    upgrade: true
 
-    # Arch Linux distro
-    - name: Update Arch-based distro
-      when: ansible_distribution == 'Arch Linux'
-      community.general.pacman:
-        update_cache: true
-        upgrade: true
+# CentOS-based Linux distro
+- name: Update CentOS-based distro
+  when: ansible_distribution in ['CentOS', 'RedHat', 'OracleLinux', 'Amazon']
+  ansible.builtin.yum:
+    name: '*'
+    state: latest
+    update_only: true
 
-    # CentOS-based Linux distro
-    - name: Update CentOS-based distro
-      when: ansible_distribution in ['CentOS', 'RedHat', 'OracleLinux', 'Amazon']
-      ansible.builtin.yum:
-        name: '*'
-        state: latest
-        update_only: true
+# Fedora-based Linux distro
+- name: Update Fedora-based distro
+  when: ansible_distribution == 'Fedora'
+  ansible.builtin.dnf:
+    name: '*'
+    state: latest
+    update_only: true 
 
-    # Fedora-based Linux distro
-    - name: Update Fedora-based distro
-      when: ansible_distribution == 'Fedora'
-      ansible.builtin.dnf:
-        name: '*'
-        state: latest
-        update_only: true 
-
-    # openSUSE-based Linux distro
-    - name: Update openSUSE-based distro
-      when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server']
-      community.general.zypper:
-        name: '*'
+# openSUSE-based Linux distro
+- name: Update openSUSE-based distro
+  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server']
+  community.general.zypper:
+    name: '*'

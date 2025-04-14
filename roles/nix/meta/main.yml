@@ -2,3 +2,5 @@ collections:
   - community.general
   - containers.podman
   - community.docker
+  - community.general.pacman
+  - community.general.zypper
