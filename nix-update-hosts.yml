@@ -1,0 +1,14 @@
+---
+- name: Nix - Install updates and Reboot as needed
+  hosts: all 
+  gather_facts: true
+  become: true
+  
+  roles:
+    - role: roles/nix
+      vars:
+        nix_task: nix-update-hosts.yml
+
+    - role: roles/nix
+      vars:
+        nix_task: nix-check-reboot.yml

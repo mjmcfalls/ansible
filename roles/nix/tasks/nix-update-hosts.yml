@@ -32,6 +32,6 @@
 
 # openSUSE-based Linux distro
 - name: Update openSUSE-based distro
-  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server']
+  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed']
   community.general.zypper:
     name: '*'
