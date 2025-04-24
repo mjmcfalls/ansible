@@ -1,3 +1,4 @@
+---
 - name: Allow Plex Web
   ansible.posix.firewalld:
     port: 32400/tcp

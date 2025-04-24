@@ -1,5 +1,3 @@
----
-handlers:
 - name: Reload firewalld
   ansible.builtin.service:
     name: firewalld
