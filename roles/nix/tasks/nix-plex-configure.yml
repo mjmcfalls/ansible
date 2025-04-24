@@ -6,7 +6,7 @@
     state: enabled
   notify:
     - Reload firewalld
-    
+
 - name: Allow Plex DLNA
   ansible.posix.firewalld:
     port: 1900/tcp
@@ -39,8 +39,3 @@
   notify:
     - Reload firewalld
 
-  handlers:
-  - name: Reload firewalld
-    ansible.builtin.service:
-      name: firewalld
-      state: reloaded
