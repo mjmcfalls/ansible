@@ -27,35 +27,35 @@
   ansible.builtin.command: zypper needs-rebooting
   register: suserestart
 
-- name: Print Debian reboot needed
+- name: "Print Debian reboot needed"
   ansible.builtin.debug:
     msg: "{{ inventory_hostname }} reboot needed"
   when: ansible_distribution in ['Debian', 'Ubuntu', 'LinuxMint'] and (debianrestart is defined) and (debianrestart.stdout | regex_search('NEEDRESTART-(KEXP|SVC)'))
 
-- name: Pring openSUSE-based reboot status
+- name: "Print openSUSE-based reboot status"
   ansible.builtin.debug:
     msg: "{{ inventory_hostname }} reboot needed"
-  when: (suserestart is defined) and (suse-restart.stdout | regex_search('(Reboot is required)'))
+  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed'] and (suserestart is defined) and (suserestart.stdout | regex_search('(Reboot is required)'))
 
-- name: Print RHEL Update
+- name: "Print RHEL Update"
   ansible.builtin.debug:
     msg: "{{ inventory_hostname }} reboot needed"
-  when: ( rhelrestart is defined) and (rhelrestart.stdout | regex_search('(Reboot is required)'))
+  when: ansible_distribution in ['CentOS', 'RedHat', 'OracleLinux', 'Amazon'] and (rhelrestart is defined) and (rhelrestart.stdout | regex_search('(Reboot is required)'))
  
-- name: Print RHEL Update
-  ansible.builtin.debug:
-    msg: "{{ inventory_hostname }} reboot needed"
-  when: ( rhelrestart is defined) and (rhelrestart.stdout | regex_search('(Reboot is required)'))
+# - name: "Print RHEL Update"
+#   ansible.builtin.debug:
+#     msg: "{{ inventory_hostname }} reboot needed"
+#   when: ansible_distribution in ['CentOS', 'RedHat', 'OracleLinux', 'Amazon'] and (rhelrestart is defined) and (rhelrestart.stdout | regex_search('(Reboot is required)'))
 
 ### REBOOTS
-- name: Suse - Reboot Host
+- name: "Suse - Reboot Host"
   ansible.builtin.reboot:
-  when: (suserestart is defined) and (suserestart.stdout | regex_search('(Reboot is required)'))
+  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed'] and (suserestart is defined) and (suserestart.stdout | regex_search('(Reboot is required)'))
 
-- name: Debian - Reboot Host
+- name: "Debian - Reboot Host"
   ansible.builtin.reboot:
-  when: (debianrestart is defined) and (debianrestart.stdout | regex_search('NEEDRESTART-(KEXP|SVC)'))
+  when: ansible_distribution in ['Debian', 'Ubuntu', 'LinuxMint'] and (debianrestart is defined) and (debianrestart.stdout | regex_search('NEEDRESTART-(KEXP|SVC)'))
 
-- name: REHL - Reboot host
+- name: "RHEL - Reboot host"
   ansible.builtin.reboot:
-  when: ( rhelrestart is defined) and (rhelrestart.stdout | regex_search('(Reboot is required)'))
+  when: ansible_distribution in ['CentOS', 'RedHat', 'OracleLinux', 'Amazon'] and (rhelrestart is defined) and (rhelrestart.stdout | regex_search('(Reboot is required)'))

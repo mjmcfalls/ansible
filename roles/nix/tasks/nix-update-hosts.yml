@@ -35,3 +35,6 @@
   when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed']
   community.general.zypper:
     name: '*'
+    update_cache: true
+    state: latest
+    force_resolution: true

@@ -1,0 +1,30 @@
+---
+- name: Allow Plex Web
+  ansible.posix.firewalld:
+    port: 32400/tcp
+    permanent: true
+    state: enabled
+
+- name: Allow Plex DLNA
+  ansible.posix.firewalld:
+    port: 1900/tcp
+    permanent: true
+    state: enabled
+
+- name: Plex - older Bonjour/Avahi network discovery
+  ansible.posix.firewalld:
+    port: 5353/udp
+    permanent: true
+    state: enabled     
+
+- name: Plex - current GDM network discovery
+  ansible.posix.firewalld:
+    port: 32410-32414/udp
+    permanent: true
+    state: enabled   
+
+- name: Access Plex DLNA Server 
+  ansible.posix.firewalld:
+    port: 32469/tcp
+    permanent: true
+    state: enabled   
