@@ -1,0 +1,33 @@
+
+nix:
+  hosts:
+    children:
+      docker:
+      media:
+      rpi:
+      monitoring:
+
+dns:
+  hosts:
+    172.16.255.217:
+    172.16.255.218:
+
+docker:
+  hosts:
+    172.16.255.217:
+    172.16.255.218:
+    172.16.255.227:
+
+media:
+  hosts:
+    172.16.255.236:
+
+rpi:
+  hosts:
+    172.16.255.221:
+    172.16.255.219:
+
+monitoring:
+  hosts:
+    172.16.255.237:
+
