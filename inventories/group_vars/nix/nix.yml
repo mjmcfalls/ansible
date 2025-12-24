@@ -1,0 +1,5 @@
+---
+ansible_user: "{{ nix_ansible_user }}"
+ansible_password: "{{ nix_ansible_password }}"
+ansible_become_user: root
+ansible_become: true

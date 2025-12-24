@@ -1,6 +1,6 @@
 ---
 - name: Nix - Install updates and Reboot as needed
-  hosts: all 
+  hosts: nix 
   gather_facts: true
   become: true
   

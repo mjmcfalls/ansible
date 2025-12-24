@@ -1,0 +1,3 @@
+ansible_user: pi
+ansible_become_user: root
+ansible_become: true

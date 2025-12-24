@@ -26,16 +26,18 @@
   when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed']
   ansible.builtin.command: zypper needs-rebooting
   register: suserestart
+  failed_when:
+    - suserestart.rc == 0
 
 - name: "Print Debian reboot needed"
   ansible.builtin.debug:
     msg: "{{ inventory_hostname }} reboot needed"
-  when: ansible_distribution in ['Debian', 'Ubuntu', 'LinuxMint'] and (debianrestart is defined) and (debianrestart.stdout | regex_search('NEEDRESTART-(KEXP|SVC)'))
+  when: ansible_distribution in ['Debian', 'Ubuntu', 'LinuxMint'] and (debianrestart is defined) and (debianrestart.stdout | regex_search("NEEDRESTART-SVC`:` [2,3,0]"))
 
 - name: "Print openSUSE-based reboot status"
   ansible.builtin.debug:
     msg: "{{ inventory_hostname }} reboot needed"
-  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed'] and (suserestart is defined) and (suserestart.stdout | regex_search('(Reboot is required)'))
+  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed'] and (suserestart is defined) and (suserestart.rc == '102')
 
 - name: "Print RHEL Update"
   ansible.builtin.debug:
@@ -50,11 +52,11 @@
 ### REBOOTS
 - name: "Suse - Reboot Host"
   ansible.builtin.reboot:
-  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed'] and (suserestart is defined) and (suserestart.stdout | regex_search('(Reboot is required)'))
+  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed'] and (suserestart is defined) and (suserestart.rc == '102')
 
 - name: "Debian - Reboot Host"
   ansible.builtin.reboot:
-  when: ansible_distribution in ['Debian', 'Ubuntu', 'LinuxMint'] and (debianrestart is defined) and (debianrestart.stdout | regex_search('NEEDRESTART-(KEXP|SVC)'))
+  when: ansible_distribution in ['Debian', 'Ubuntu', 'LinuxMint'] and (debianrestart is defined) and (debianrestart.stdout | regex_search("NEEDRESTART-SVC`:` [2,3,0]"))
 
 - name: "RHEL - Reboot host"
   ansible.builtin.reboot:
