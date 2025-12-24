@@ -22,12 +22,12 @@
 
 
 # openSUSE-based Linux distro
-- name: Update openSUSE-based distro
-  when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed']
-  ansible.builtin.command: zypper needs-rebooting
-  register: suserestart
-  failed_when:
-    - suserestart.rc == 0
+# - name: Update openSUSE-based distro
+#   when: ansible_distribution in ['openSUSE Leap', 'SUSE Linux Enterprise Server', 'openSUSE Tumbleweed']
+#   ansible.builtin.command: zypper needs-rebooting
+#   register: suserestart
+#   failed_when:
+#     - suserestart.rc == 0
 
 - name: "Print Debian reboot needed"
   ansible.builtin.debug:
